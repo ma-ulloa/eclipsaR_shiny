@@ -1,0 +1,32 @@
+---
+title: "eclipsaR_shiny"
+format: html
+server: shiny
+---
+
+```{r}
+#| context: server
+library(shiny)
+
+shinyApp(
+ui=fluidPage(
+  selectInput("data_input",label="Select data",choices=c("mtcars","faithful","iris")),
+  selectInput("header_input",label="Select column name",choices=NULL),
+  plotOutput("plot_output",width="400px")
+),
+
+server=function(input,output,session) {
+  getdata <- reactive({ get(input$data_input, 'package:datasets') })
+  
+  observe({
+    updateSelectInput(session,"header_input",label="Select column name",choices=colnames(getdata()))
+  })
+  
+  output$plot_output <- renderPlot({
+    #shiny::req(input$header_input)
+    #validate(need(input$header_input %in% colnames(getdata()),message="Incorrect column name."))
+    hist(getdata()[, input$header_input],xlab=input$header_input,main=input$data_input)
+  })
+},
+options=list(height=600))
+```
