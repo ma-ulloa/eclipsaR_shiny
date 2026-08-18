@@ -39,7 +39,7 @@ plot_magnitude <- function(magnitude, type) {
   r <- 1
   sun <- tibble(x0 = 1, y0 = 1, r = r)
   if (type %in% c("Total", "Hybrid")) {
-    moon <- circle1
+    moon <- sun
     if (!is.null(magnitude)) {
       warning(paste0("Magnitude will be ignore because the eclipse is ", type))
     }

@@ -19,7 +19,10 @@ eclipses <- read_csv("https://raw.githubusercontent.com/ma-ulloa/eclipsaR/main/d
 
 eclipses$Date <- as.Date(eclipses$Date)
 eclipses$Year <- format(eclipses$Date, "%Y")      
-years <- sort(unique(eclipses$Year))   
+years <- sort(unique(eclipses$Year))  
+
+source("R/plot_magnitude.R")
+source("R/plot_path.R")
 ```
 
 
@@ -30,7 +33,8 @@ shinyApp(
 ui = fluidPage(
   selectInput("year_input", label = "Select year", choices = NULL),
   selectInput("eclipse_input", label = "Select eclipse", choices = NULL),
-  tableOutput("detail_output")
+  tableOutput("detail_output"),
+  plotOutput("eclipse_map",width="300px",height="300px")
 ),
 
 server=function(input,output,session) {
@@ -57,14 +61,23 @@ server=function(input,output,session) {
     year_rows()[format(year_rows()$Date, "%Y-%m-%d") == input$eclipse_input, ]
   })
 
-  # --- "consequent actions" go here - this is just a placeholder --------
-  # replace/extend this with whatever you want to do once one eclipse is
-  # picked: plot it on a map, show its path width, look up nearby cities...
+  # --- "consequent actions" go here --------
   output$detail_output <- renderTable({
     req(selected_row())
-    selected_row()[, c("Date", "Type", "Gamma", "Magnitude", "Central_Duration",
-                        "Latitude", "Longitude", "Continents", "Geographical_Area")]
+    selected_row()[, c("Type", "Gamma", "Magnitude",
+      "Latitude", "Longitude")]
   })
+
+  output$eclipse_map <- renderPlot({
+    req(selected_row())
+    
+    # Extract coordinates
+    mag <- as.numeric(selected_row()$Magnitude)
+    tp <- (selected_row()$Type)
+  
+    plot_magnitude(mag,tp)
+  })
+
 },
 options=list(height=600))
 ```
