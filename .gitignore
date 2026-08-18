@@ -1,7 +1,4 @@
 .DS_Store
-/.quarto/
-**/*.quarto_ipynb
-/*_cache/
-/*_files/
-_site/
-_freeze/
+*_data/
+*_files/
+*.html
