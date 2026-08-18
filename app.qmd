@@ -2,11 +2,28 @@
 title: "eclipsaR_shiny"
 format: html
 server: shiny
+
+execute:
+  warning: false
 ---
 
 ```{r}
-#| context: server
+library(rmarkdown)
+library(readr)
 library(shiny)
+```
+
+```{r}
+eclipses <- read_csv("https://raw.githubusercontent.com/ma-ulloa/eclipsaR/main/data/formatted_eclipses.csv")
+
+eclipses$Date <- as.Date(eclipses$Date)
+eclipses$Date <- format(eclipses$Date, "%Y")      
+years <- sort(unique(eclipses$Date))   
+```
+
+
+```{r}
+#| context: server
 
 shinyApp(
 ui=fluidPage(
