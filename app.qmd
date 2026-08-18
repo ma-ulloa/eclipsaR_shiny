@@ -14,11 +14,12 @@ library(shiny)
 ```
 
 ```{r}
+#| context: data
 eclipses <- read_csv("https://raw.githubusercontent.com/ma-ulloa/eclipsaR/main/data/formatted_eclipses.csv")
 
 eclipses$Date <- as.Date(eclipses$Date)
-eclipses$Date <- format(eclipses$Date, "%Y")      
-years <- sort(unique(eclipses$Date))   
+eclipses$Year <- format(eclipses$Date, "%Y")      
+years <- sort(unique(eclipses$Year))   
 ```
 
 
@@ -26,23 +27,43 @@ years <- sort(unique(eclipses$Date))
 #| context: server
 
 shinyApp(
-ui=fluidPage(
-  selectInput("data_input",label="Select data",choices=c("mtcars","faithful","iris")),
-  selectInput("header_input",label="Select column name",choices=NULL),
-  plotOutput("plot_output",width="400px")
+ui = fluidPage(
+  selectInput("year_input", label = "Select year", choices = NULL),
+  selectInput("eclipse_input", label = "Select eclipse", choices = NULL),
+  tableOutput("detail_output")
 ),
 
 server=function(input,output,session) {
-  getdata <- reactive({ get(input$data_input, 'package:datasets') })
-  
-  observe({
-    updateSelectInput(session,"header_input",label="Select column name",choices=colnames(getdata()))
+
+  # year (static)
+  updateSelectInput(session, "year_input", choices = sort(years))
+
+  # eclipses that happened in the selected year
+  year_rows <- reactive({
+    req(input$year_input)
+    eclipses[eclipses$Year == as.integer(input$year_input), ]
   })
   
-  output$plot_output <- renderPlot({
-    #shiny::req(input$header_input)
-    #validate(need(input$header_input %in% colnames(getdata()),message="Incorrect column name."))
-    hist(getdata()[, input$header_input],xlab=input$header_input,main=input$data_input)
+ observe({
+    df <- year_rows()
+    labels <- paste0(format(df$Date, "%Y-%m-%d"), " (", df$Type, ")")
+    choices <- setNames(format(df$Date, "%Y-%m-%d"), labels)
+    updateSelectInput(session, "eclipse_input", label = "Select eclipse", choices = choices)
+  })
+
+  # eclipse the user picked
+  selected_row <- reactive({
+    req(input$eclipse_input)
+    year_rows()[format(year_rows()$Date, "%Y-%m-%d") == input$eclipse_input, ]
+  })
+
+  # --- "consequent actions" go here - this is just a placeholder --------
+  # replace/extend this with whatever you want to do once one eclipse is
+  # picked: plot it on a map, show its path width, look up nearby cities...
+  output$detail_output <- renderTable({
+    req(selected_row())
+    selected_row()[, c("Date", "Type", "Gamma", "Magnitude", "Central_Duration",
+                        "Latitude", "Longitude", "Continents", "Geographical_Area")]
   })
 },
 options=list(height=600))
