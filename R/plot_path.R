@@ -45,7 +45,7 @@ plot_path <- function(url, destfile = file.path(tempdir(), basename(url))) {
 
   max_point <- st_read(destfile, layer = layers$name[1])
   path <- st_read(destfile, layer = layers$name[2])
-  path <- path |> filter(Name == "Umbra")
+  path <- path |> filter(grepl("Umbra", Name))
 
   if (nrow(path) < 1) {
     stop("No `Umbra` path found in the file")
@@ -61,7 +61,7 @@ plot_path <- function(url, destfile = file.path(tempdir(), basename(url))) {
     ) |>
     add_sf(
       data = path,
-      split = ~ seq_len(nrow(path)),
+      split = ~Name,
       color = I("orange"),
       alpha = 0.3,
       line = list(width = 1)
