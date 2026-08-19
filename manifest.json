@@ -3918,11 +3918,26 @@
     }
   },
   "files": {
+    ".posit/publish/deployments/deployment-F27U.toml": {
+      "checksum": "43e8217dbb5e3a2073d35bb8549eba1e"
+    },
+    ".posit/publish/deployments/deployment-IU86.toml": {
+      "checksum": "265eccb1ed7bff5fe3974c13ee6669dd"
+    },
     ".posit/publish/deployments/deployment-T3N8.toml": {
-      "checksum": "e7fa8e6dba31eed63418d716439f8e6b"
+      "checksum": "ee2f2c7669f45a91b9a984d1e5778224"
+    },
+    ".posit/publish/eclipsaR_shiny_html-OM0A.toml": {
+      "checksum": "643e3c47b47178579d46350654111fe4"
     },
     ".posit/publish/eclipsaR_shiny-6P0E.toml": {
-      "checksum": "eba29c68d76aef5b34dba8ca147e4117"
+      "checksum": "99f79cee8aacceb0af827ef660215264"
+    },
+    ".posit/publish/eclipsaR_shiny-9IL6.toml": {
+      "checksum": "e4bd4f7c8c560c8c361d83dedb934737"
+    },
+    ".posit/publish/eclipsaR_shiny-LNDR.toml": {
+      "checksum": "fd7734d706d86859f258ea56601045e5"
     },
     "app_data/data_chunks_index.txt": {
       "checksum": "e9a7b18a42db655a265232f05ac57d0e"
