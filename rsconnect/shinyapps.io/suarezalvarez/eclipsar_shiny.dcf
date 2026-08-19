@@ -1,0 +1,10 @@
+name: eclipsar_shiny
+title:
+username: suarezalvarez
+account: suarezalvarez
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17722988
+bundleId: 12432524
+url: https://suarezalvarez.shinyapps.io/eclipsar_shiny/
+version: 1

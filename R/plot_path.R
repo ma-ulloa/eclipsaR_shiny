@@ -1,7 +1,7 @@
 library(sf)
 library(ggplot2)
 library(tidyverse)
-library(rnaturalearth)
+library(rnaturalearthdata)
 library(plotly)
 library(httr)
 
@@ -28,7 +28,8 @@ construct_url <- function(eclipse_date, type) {
 
 # function to plot umbral paths and max eclipse point in an interactive map using `plotly` and `sf`
 
-world <- ne_countries(returnclass = "sf")
+data("countries110", package = "rnaturalearthdata")
+world <- countries110
 
 plot_path <- function(url, destfile = file.path(tempdir(), basename(url))) {
   # check if the url is reachable

@@ -2793,35 +2793,32 @@
         "Built": "R 4.5.3; ; 2026-08-10 11:48:04 UTC; unix"
       }
     },
-    "rnaturalearth": {
+    "rnaturalearthdata": {
       "Source": "CRAN",
       "Repository": "https://cran.rstudio.com",
       "description": {
-        "Package": "rnaturalearth",
-        "Title": "World Map Data from Natural Earth",
-        "Version": "1.2.0",
-        "Authors@R": "c(\n  person(\n    family = \"Massicotte\",\n    given = \"Philippe\",\n    email = \"pmassicotte@hotmail.com\",\n    role = c(\"aut\", \"cre\"),\n    comment = c(ORCID = \"0000-0002-5919-4116\")\n  ),\n  person(\n    family = \"South\",\n    given = \"Andy\",\n    email = \"southandy@gmail.com\",\n    role = c(\"aut\")\n  ),\n  person(\n    family = \"Hufkens\",\n    given = \"Koen\",\n    email = \"koen.hufkens@gmail.com\",\n    role = c(\"ctb\"),\n    comment = c(ORCID = \"0000-0002-5070-8109\")\n  ))",
-        "Description": "Facilitates mapping by making natural earth map data from <https://www.naturalearthdata.com/> more easily available to R users.",
-        "License": "MIT + file LICENSE",
+        "Package": "rnaturalearthdata",
+        "Title": "World Vector Map Data from Natural Earth Used in 'rnaturalearth'",
+        "Version": "1.0.0",
+        "Authors@R": "c(\n  person(\n    family = \"South\",\n    given = \"Andy\",\n    email = \"southandy@gmail.com\",\n    role = c(\"aut\"),\n    comment = c(ORCID = \"0000-0003-4051-6135\")\n  ),\n  person(\n    family = \"Michael\",\n    given = \"Schramm\",\n    email = \"mpschramm@gmail.com\",\n    role = c(\"aut\")\n  ),\n  person(\n    family = \"Massicotte\",\n    given = \"Philippe\",\n    email = \"pmassicotte@hotmail.com\",\n    role = c(\"aut\", \"cre\"),\n    comment = c(ORCID = \"0000-0002-5919-4116\")\n  ))",
+        "Description": "Vector map data from <https://www.naturalearthdata.com/>. Access functions are provided in the accompanying package 'rnaturalearth'.",
+        "License": "CC0",
         "LazyData": "true",
         "LazyDataCompression": "xz",
         "Encoding": "UTF-8",
-        "URL": "https://docs.ropensci.org/rnaturalearth/,\nhttps://github.com/ropensci/rnaturalearth,\nhttps://docs.ropensci.org/rnaturalearthhires/",
-        "BugReports": "https://github.com/ropensci/rnaturalearth/issues",
-        "Additional_repositories": "https://ropensci.r-universe.dev",
+        "URL": "https://docs.ropensci.org/rnaturalearthdata/,\nhttps://github.com/ropensci/rnaturalearthdata",
+        "BugReports": "https://github.com/ropensci/rnaturalearthdata/issues",
         "Depends": "R (>= 3.1.1)",
-        "Imports": "cli, httr (>= 1.1.0), jsonlite, sf (>= 0.3-4), terra, utils\n(>= 3.2.3)",
-        "Suggests": "pak, dplyr, ggplot2, ggrepel, knitr (>= 1.12.3), lifecycle\n(>= 1.0.3), pbapply, purrr, rlang, rmarkdown, rnaturalearthdata\n(>= 1.0.0), rnaturalearthhires (>= 1.0.0), testthat (>= 0.9.1),\ntmap",
-        "Config/Needs/website": "ropensci/rnaturalearthhires",
-        "VignetteBuilder": "knitr",
-        "RoxygenNote": "7.3.3",
+        "Imports": "",
+        "Suggests": "knitr (>= 1.12.3), testthat (>= 0.9.1)",
+        "RoxygenNote": "7.3.1",
         "NeedsCompilation": "no",
-        "Packaged": "2026-01-19 14:12:33 UTC; filoche",
-        "Author": "Philippe Massicotte [aut, cre] (ORCID:\n    <https://orcid.org/0000-0002-5919-4116>),\n  Andy South [aut],\n  Koen Hufkens [ctb] (ORCID: <https://orcid.org/0000-0002-5070-8109>)",
+        "Packaged": "2024-02-09 14:10:35 UTC; filoche",
+        "Author": "Andy South [aut] (<https://orcid.org/0000-0003-4051-6135>),\n  Schramm Michael [aut],\n  Philippe Massicotte [aut, cre]\n    (<https://orcid.org/0000-0002-5919-4116>)",
         "Maintainer": "Philippe Massicotte <pmassicotte@hotmail.com>",
         "Repository": "CRAN",
-        "Date/Publication": "2026-01-19 17:20:02 UTC",
-        "Built": "R 4.5.2; ; 2026-01-20 07:47:46 UTC; unix"
+        "Date/Publication": "2024-02-09 16:50:02 UTC",
+        "Built": "R 4.5.3; ; 2026-08-19 11:46:13 UTC; unix"
       }
     },
     "rstudioapi": {
@@ -3224,37 +3221,6 @@
         "RemoteRepos": "https://cran.rstudio.com",
         "RemotePkgPlatform": "source",
         "RemoteSha": "1.3.2"
-      }
-    },
-    "terra": {
-      "Source": "CRAN",
-      "Repository": "https://cran.rstudio.com",
-      "description": {
-        "Package": "terra",
-        "Type": "Package",
-        "Title": "Spatial Data Analysis",
-        "Version": "1.9-34",
-        "Date": "2026-06-18",
-        "Depends": "R (>= 3.5.0), methods",
-        "Suggests": "parallel, tinytest, ncdf4, sf (>= 0.9-8), igraph, deldir,\nXML, leaflet (>= 2.2.1), htmlwidgets, future, future.apply",
-        "LinkingTo": "Rcpp",
-        "Imports": "Rcpp (>= 1.0-10)",
-        "SystemRequirements": "C++17, GDAL (>= 2.2.3), GEOS (>= 3.4.0), PROJ (>=\n4.9.3), TBB, sqlite3",
-        "Encoding": "UTF-8",
-        "Language": "en-US",
-        "Maintainer": "Robert J. Hijmans <r.hijmans@gmail.com>",
-        "Description": "Methods for spatial data analysis with vector (points, lines, polygons) and raster (grid) data. Methods for vector data include geometric operations such as intersect and buffer. Raster methods include local, focal, global, zonal and geometric operations. The predict and interpolate methods facilitate the use of regression type (interpolation, machine learning) models for spatial prediction, including with satellite remote sensing data. Processing of very large files is supported. See the manual and tutorials on <https://rspatial.org/> to get started.",
-        "License": "GPL (>= 3)",
-        "URL": "https://rspatial.org/, https://rspatial.github.io/terra/",
-        "BugReports": "https://github.com/rspatial/terra/issues",
-        "LazyLoad": "yes",
-        "Authors@R": "c(\n\tperson(\"Robert J.\", \"Hijmans\", role=c(\"cre\", \"aut\"),  \n\t\t\temail=\"r.hijmans@gmail.com\", comment=c(ORCID=\"0000-0001-5872-2872\")),\t\t\t\n    person(\"Andrew\", \"Brown\", role=\"aut\", comment=c(ORCID=\"0000-0002-4565-533X\")),\n    person(\"Márcia\", \"Barbosa\", role=\"aut\", comment=c(ORCID=\"0000-0001-8972-7713\")),\n    person(\"Krzysztof\", \"Dyba\", role=\"ctb\", comment=c(ORCID=\"0000-0002-8614-3816\")),\n    person(\"Roger\", \"Bivand\", role=\"ctb\", comment=c(ORCID=\"0000-0003-2392-6140\")),\n    person(\"Michael\", \"Chirico\", role=\"ctb\", comment=c(ORCID=\"0000-0003-0787-087X\")),\n    person(\"Emanuele\", \"Cordano\", role=\"ctb\",comment=c(ORCID=\"0000-0002-3508-5898\")),\n    person(\"Edzer\", \"Pebesma\", role=\"ctb\", comment=c(ORCID=\"0000-0001-8049-7069\")),\n    person(\"Barry\", \"Rowlingson\", role=\"ctb\", comment=c(ORCID=\"0000-0002-8586-6625\")),\n    person(\"Michael D.\", \"Sumner\", role=\"ctb\", comment=c(ORCID=\"0000-0002-2471-7511\")))",
-        "NeedsCompilation": "yes",
-        "Packaged": "2026-06-19 03:43:47 UTC; rhijm",
-        "Author": "Robert J. Hijmans [cre, aut] (ORCID:\n    <https://orcid.org/0000-0001-5872-2872>),\n  Andrew Brown [aut] (ORCID: <https://orcid.org/0000-0002-4565-533X>),\n  Márcia Barbosa [aut] (ORCID: <https://orcid.org/0000-0001-8972-7713>),\n  Krzysztof Dyba [ctb] (ORCID: <https://orcid.org/0000-0002-8614-3816>),\n  Roger Bivand [ctb] (ORCID: <https://orcid.org/0000-0003-2392-6140>),\n  Michael Chirico [ctb] (ORCID: <https://orcid.org/0000-0003-0787-087X>),\n  Emanuele Cordano [ctb] (ORCID: <https://orcid.org/0000-0002-3508-5898>),\n  Edzer Pebesma [ctb] (ORCID: <https://orcid.org/0000-0001-8049-7069>),\n  Barry Rowlingson [ctb] (ORCID: <https://orcid.org/0000-0002-8586-6625>),\n  Michael D. Sumner [ctb] (ORCID:\n    <https://orcid.org/0000-0002-2471-7511>)",
-        "Repository": "CRAN",
-        "Date/Publication": "2026-06-19 15:10:02 UTC",
-        "Built": "R 4.5.3; aarch64-apple-darwin20.0.0; 2026-07-14 14:38:02 UTC; unix"
       }
     },
     "textshaping": {
@@ -3918,11 +3884,14 @@
     }
   },
   "files": {
+    ".posit/publish/deployments/deployment-2UQ1.toml": {
+      "checksum": "5ce8253ab03fe485294e40f44c01ed07"
+    },
     ".posit/publish/deployments/deployment-F27U.toml": {
       "checksum": "43e8217dbb5e3a2073d35bb8549eba1e"
     },
     ".posit/publish/deployments/deployment-IU86.toml": {
-      "checksum": "265eccb1ed7bff5fe3974c13ee6669dd"
+      "checksum": "334784e482f9067d47e7740349fc16ab"
     },
     ".posit/publish/deployments/deployment-T3N8.toml": {
       "checksum": "ee2f2c7669f45a91b9a984d1e5778224"
@@ -3935,6 +3904,9 @@
     },
     ".posit/publish/eclipsaR_shiny-9IL6.toml": {
       "checksum": "e4bd4f7c8c560c8c361d83dedb934737"
+    },
+    ".posit/publish/eclipsaR_shiny-LIDL.toml": {
+      "checksum": "371e68fd7afc13368b479c38e3883b6f"
     },
     ".posit/publish/eclipsaR_shiny-LNDR.toml": {
       "checksum": "fd7734d706d86859f258ea56601045e5"
@@ -3991,13 +3963,10 @@
       "checksum": "f51f6ee4cc0cb08d5d786c63097f707c"
     },
     "R/plot_path.R": {
-      "checksum": "7f095294f62c22515520344fff9e7a11"
+      "checksum": "e94fbc9a445cf0f6156432e75ab78128"
     },
     "README.md": {
       "checksum": "902ac5ee555bf1b266f3c22aaa248b1d"
-    },
-    "test.kmz": {
-      "checksum": "afdec93c573355ca394a7cc713cde360"
     }
   },
   "users": null
