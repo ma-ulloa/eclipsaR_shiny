@@ -33,8 +33,9 @@ shinyApp(
 ui = fluidPage(
   selectInput("year_input", label = "Select year", choices = NULL),
   selectInput("eclipse_input", label = "Select eclipse", choices = NULL),
-  tableOutput("detail_output"),
-  plotOutput("eclipse_map",width="300px",height="300px")
+  #tableOutput("detail_output"),
+  plotOutput("eclipse_sun",width="300px",height="300px"),
+  plotOutput("eclipse_map",width="300px",height="300px"),
 ),
 
 server=function(input,output,session) {
@@ -68,14 +69,25 @@ server=function(input,output,session) {
       "Latitude", "Longitude")]
   })
 
-  output$eclipse_map <- renderPlot({
+  output$eclipse_sun <- renderPlot({
     req(selected_row())
     
-    # Extract coordinates
+    # Extract data
     mag <- as.numeric(selected_row()$Magnitude)
     tp <- (selected_row()$Type)
   
     plot_magnitude(mag,tp)
+  })
+
+  output$eclipse_map <- renderPlot({
+    req(selected_row())
+    
+    # Extract data
+    tp <- (selected_row()$Type)
+    dt <- as.character(selected_row()$Date)
+    url <- construct_url(dt, tp)
+  
+    plot_path(url)
   })
 
 },

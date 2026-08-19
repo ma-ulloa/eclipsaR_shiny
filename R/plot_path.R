@@ -5,11 +5,12 @@ library(rnaturalearth)
 library(plotly)
 library(httr)
 
+
 # helper function to construct url address from date and type of eclipse
 base_url <- "http://xjubier.free.fr/download/GE/en/"
 eclipse_abbs <- c(
   "Total" = "TSE",
-  "Anular" = "ASE",
+  "Annular" = "ASE",
   "Partial" = "PSE",
   "Hybrid" = "HSE"
 )
