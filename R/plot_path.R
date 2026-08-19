@@ -45,11 +45,19 @@ plot_path <- function(url, destfile = file.path(tempdir(), basename(url))) {
   })
 
   max_point <- st_read(destfile, layer = layers$name[1])
-  path <- st_read(destfile, layer = layers$name[2])
-  path <- path |> filter(grepl("Umbra", Name))
+  path_layer <- st_read(destfile, layer = layers$name[2])
+
+  # Total/Annular/Hybrid eclipses have a filled "Umbra" polygon in this layer.
+  # Partial eclipses never do (the umbra doesn't reach Earth's surface), so
+  # fall back to the penumbral limit line(s) that bound where the eclipse
+  # was visible.
+  path <- path_layer |> filter(grepl("Umbra", Name))
+  if (nrow(path) < 1) {
+    path <- path_layer |> filter(grepl("Penumbra.*Limit", Name))
+  }
 
   if (nrow(path) < 1) {
-    stop("No `Umbra` path found in the file")
+    stop("No eclipse path found in the file")
   }
 
   # plot

@@ -11,6 +11,8 @@ execute:
 library(rmarkdown)
 library(readr)
 library(shiny)
+library(plotly)
+library(bslib)
 ```
 
 ```{r}
@@ -30,14 +32,32 @@ source("R/plot_path.R")
 
 ```{r}
 #| context: server
-
 shinyApp(
-  ui = fluidPage(
-    selectInput("year_input", label = "Select year", choices = NULL),
-    selectInput("eclipse_input", label = "Select eclipse", choices = NULL),
-    #tableOutput("detail_output"),
-    plotOutput("eclipse_sun", width = "300px", height = "300px"),
-    plotlyOutput("eclipse_map", width = "300px", height = "300px"),
+  ui = page_fillable(
+    layout_columns(
+      col_widths = c(6, 6),
+      card(
+        card_header("Select an eclipse"),
+        selectInput(
+          "year_input",
+          label = "Select year",
+          choices = years,
+          selected = "2017"
+        ),
+        selectInput("eclipse_input", label = "Select eclipse", choices = NULL)
+      ),
+      card(
+        card_header("Sun view"),
+        plotOutput("eclipse_sun", width = "500px", height = "500px")
+      )
+    ),
+    layout_columns(
+      col_widths = 12,
+      card(
+        card_header("Eclipse path"),
+        plotlyOutput("eclipse_map", width = "500px", height = "500px")
+      )
+    )
   ),
 
   server = function(input, output, session) {
@@ -65,7 +85,9 @@ shinyApp(
     # eclipse the user picked
     selected_row <- reactive({
       req(input$eclipse_input)
-      year_rows()[format(year_rows()$Date, "%Y-%m-%d") == input$eclipse_input, ]
+      match <- format(year_rows()$Date, "%Y-%m-%d") == input$eclipse_input
+      req(any(match)) # <- this actually guards against zero matches
+      year_rows()[match, ]
     })
 
     # --- "consequent actions" go here --------
